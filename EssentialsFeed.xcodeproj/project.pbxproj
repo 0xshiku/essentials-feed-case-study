@@ -10,6 +10,7 @@
 		F5342F1626F7C54300532BDF /* EssentialsFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5342F0C26F7C54300532BDF /* EssentialsFeed.framework */; };
 		F5342F2726F7C58D00532BDF /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5342F2626F7C58D00532BDF /* FeedItem.swift */; };
 		F5342F2926F7C6EB00532BDF /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5342F2826F7C6EB00532BDF /* FeedLoader.swift */; };
+		F552615726F9104A00415D1E /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552615626F9104A00415D1E /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		F5342F1C26F7C54300532BDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5342F2626F7C58D00532BDF /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		F5342F2826F7C6EB00532BDF /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
+		F552615626F9104A00415D1E /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				F5342F1C26F7C54300532BDF /* Info.plist */,
+				F552615626F9104A00415D1E /* RemoteFeedLoaderTests.swift */,
 			);
 			path = EssentialsFeedTests;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 					};
 					F5342F1426F7C54300532BDF = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -211,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F552615726F9104A00415D1E /* RemoteFeedLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = T85MSC354M;
@@ -412,6 +418,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chicopereira.EssentialsFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -420,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = T85MSC354M;
