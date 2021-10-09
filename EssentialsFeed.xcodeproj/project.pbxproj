@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F52F83B6271237E000970226 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F83B5271237E000970226 /* FeedItemsMapper.swift */; };
 		F5342F1626F7C54300532BDF /* EssentialsFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5342F0C26F7C54300532BDF /* EssentialsFeed.framework */; };
 		F5342F2726F7C58D00532BDF /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5342F2626F7C58D00532BDF /* FeedItem.swift */; };
 		F5342F2926F7C6EB00532BDF /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5342F2826F7C6EB00532BDF /* FeedLoader.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F52F83B5271237E000970226 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		F5342F0C26F7C54300532BDF /* EssentialsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5342F1026F7C54300532BDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5342F1526F7C54300532BDF /* EssentialsFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialsFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 		F59E00B327067A5C0082EF6C /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				F52F83B5271237E000970226 /* FeedItemsMapper.swift */,
 				F59E00B427067A7E0082EF6C /* RemoteFeedLoader.swift */,
 				F59E00B627067AC50082EF6C /* HTTPClient.swift */,
 			);
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52F83B6271237E000970226 /* FeedItemsMapper.swift in Sources */,
 				F5342F2926F7C6EB00532BDF /* FeedLoader.swift in Sources */,
 				F59E00B527067A7E0082EF6C /* RemoteFeedLoader.swift in Sources */,
 				F59E00B727067AC50082EF6C /* HTTPClient.swift in Sources */,
