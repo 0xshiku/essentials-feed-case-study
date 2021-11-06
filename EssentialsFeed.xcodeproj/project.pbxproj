@@ -24,6 +24,7 @@
 		F59E00B527067A7E0082EF6C /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E00B427067A7E0082EF6C /* RemoteFeedLoader.swift */; };
 		F59E00B727067AC50082EF6C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E00B627067AC50082EF6C /* HTTPClient.swift */; };
 		F5B797172736E33B0043EF84 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B797162736E33B0043EF84 /* RemoteFeedItem.swift */; };
+		F5B797192736E42D0043EF84 /* LocalFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B797182736E42D0043EF84 /* LocalFeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		F59E00B427067A7E0082EF6C /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		F59E00B627067AC50082EF6C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		F5B797162736E33B0043EF84 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
+		F5B797182736E42D0043EF84 /* LocalFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				F587EA3A27309FAF005C2423 /* LocalFeedLoader.swift */,
 				F587EA3C2730A05E005C2423 /* FeedStore.swift */,
+				F5B797182736E42D0043EF84 /* LocalFeedItem.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				F5342F2926F7C6EB00532BDF /* FeedLoader.swift in Sources */,
 				F5B797172736E33B0043EF84 /* RemoteFeedItem.swift in Sources */,
 				F59E00B527067A7E0082EF6C /* RemoteFeedLoader.swift in Sources */,
+				F5B797192736E42D0043EF84 /* LocalFeedItem.swift in Sources */,
 				F587EA3D2730A05E005C2423 /* FeedStore.swift in Sources */,
 				F587EA3B27309FAF005C2423 /* LocalFeedLoader.swift in Sources */,
 				F59E00B727067AC50082EF6C /* HTTPClient.swift in Sources */,
