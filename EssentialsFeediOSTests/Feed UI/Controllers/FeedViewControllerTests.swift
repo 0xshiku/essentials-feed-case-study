@@ -365,7 +365,7 @@ private extension FeedViewController {
         
         let ds = tableView.prefetchDataSource
         let index = IndexPath(row: row, section: feedImagesSection)
-        ds?.tableView(tableView, prefetchRowsAt: [index])
+        ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
     
     var isShowingLoadingIndicator: Bool {
