@@ -10,7 +10,6 @@ import EssentialsFeed
 
 
 
-
 final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
     private var refreshController: FeedRefreshViewController?
