@@ -54,7 +54,6 @@
 		F5D4DC2F279443F50044886F /* Feed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D4DC2E279443F50044886F /* Feed.xcassets */; };
 		F5D4DC312794700F0044886F /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC302794700F0044886F /* UITableView+Dequeueing.swift */; };
 		F5D4DC33279472150044886F /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC32279472150044886F /* UIImageView+Animations.swift */; };
-		F5D4DC3E2794A4F40044886F /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC3D2794A4F40044886F /* FeedLocalizationTests.swift */; };
 		F5D4DC402794A5930044886F /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC3F2794A5930044886F /* FeedUIIntegrationTests+Localization.swift */; };
 		F5D4DC422794E6600044886F /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC412794E6600044886F /* MainQueueDispatchDecorator.swift */; };
 		F5D4DC4B2798C6860044886F /* FeedPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC4A2798C6860044886F /* FeedPresenterTests.swift */; };
@@ -65,6 +64,7 @@
 		F5D4DC5B279CB7070044886F /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC5A279CB7070044886F /* FeedErrorViewModel.swift */; };
 		F5D4DC5E279CB9930044886F /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC5D279CB9930044886F /* UIRefreshControl+Helpers.swift */; };
 		F5D4DC60279CBA700044886F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC5F279CBA700044886F /* ErrorView.swift */; };
+		F5D4DC61279CBBE00044886F /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC3D2794A4F40044886F /* FeedLocalizationTests.swift */; };
 		F5F0955D274AD6E300051F48 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0955C274AD6E300051F48 /* CodableFeedStoreTests.swift */; };
 		F5F0955F2752C1A700051F48 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0955E2752C1A700051F48 /* CodableFeedStore.swift */; };
 		F5F09561275429B800051F48 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F09560275429B800051F48 /* FeedStoreSpecs.swift */; };
@@ -348,7 +348,6 @@
 		F5763F192775EC8500D45045 /* EssentialsFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5D4DC3C2794A4C60044886F /* Feed Presentation */,
 				F5D4DBDD278265060044886F /* Feed UI */,
 			);
 			path = EssentialsFeediOSTests;
@@ -515,17 +514,10 @@
 			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
-		F5D4DC3C2794A4C60044886F /* Feed Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F5D4DC3D2794A4F40044886F /* FeedLocalizationTests.swift */,
-			);
-			path = "Feed Presentation";
-			sourceTree = "<group>";
-		};
 		F5D4DC492798C6680044886F /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F5D4DC3D2794A4F40044886F /* FeedLocalizationTests.swift */,
 				F5D4DC4A2798C6860044886F /* FeedPresenterTests.swift */,
 			);
 			path = "Feed Presentation";
@@ -839,6 +831,7 @@
 			files = (
 				F5F0955D274AD6E300051F48 /* CodableFeedStoreTests.swift in Sources */,
 				F55F12FD273FE4C2009341F3 /* FeedCacheTestHelpers.swift in Sources */,
+				F5D4DC61279CBBE00044886F /* FeedLocalizationTests.swift in Sources */,
 				F552615726F9104A00415D1E /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				F52F83BE2720CB2A00970226 /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */,
 				F5F0956727565D5400051F48 /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
@@ -885,7 +878,6 @@
 				F5D4DC402794A5930044886F /* FeedUIIntegrationTests+Localization.swift in Sources */,
 				F5763F2427764FB600D45045 /* FeedUIIntegrationTests.swift in Sources */,
 				F596CCFF2779E7930091445A /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */,
-				F5D4DC3E2794A4F40044886F /* FeedLocalizationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
