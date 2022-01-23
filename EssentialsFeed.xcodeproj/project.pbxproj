@@ -45,7 +45,6 @@
 		F5D39B9D276670600058E08C /* SharedHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55F12FE273FE688009341F3 /* SharedHelperTests.swift */; };
 		F5D4DBD3277FB6B20044886F /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBD2277FB6B20044886F /* FeedImageCell.swift */; };
 		F5D4DBD52781F6050044886F /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBD42781F6050044886F /* UIView+Shimmering.swift */; };
-		F5D4DBDB278264E40044886F /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBDA278264E40044886F /* FeedImageDataLoader.swift */; };
 		F5D4DBE327837FF70044886F /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBE227837FF70044886F /* FeedImageCellController.swift */; };
 		F5D4DBE6278387C70044886F /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBE5278387C70044886F /* FeedUIComposer.swift */; };
 		F5D4DC2D2794433E0044886F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D4DC2C2794433E0044886F /* Feed.storyboard */; };
@@ -66,6 +65,7 @@
 		F5D4DC63279DB1C40044886F /* FeedImagePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC62279DB1C40044886F /* FeedImagePresenterTests.swift */; };
 		F5D4DC65279DD1240044886F /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC64279DD1240044886F /* FeedImagePresenter.swift */; };
 		F5D4DC67279DD14A0044886F /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC66279DD14A0044886F /* FeedImageViewModel.swift */; };
+		F5D4DC69279DD8160044886F /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBDA278264E40044886F /* FeedImageDataLoader.swift */; };
 		F5F0955D274AD6E300051F48 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0955C274AD6E300051F48 /* CodableFeedStoreTests.swift */; };
 		F5F0955F2752C1A700051F48 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0955E2752C1A700051F48 /* CodableFeedStore.swift */; };
 		F5F09561275429B800051F48 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F09560275429B800051F48 /* FeedStoreSpecs.swift */; };
@@ -330,6 +330,7 @@
 		F5342F2A26F7D8D200532BDF /* Feed Feature */ = {
 			isa = PBXGroup;
 			children = (
+				F5D4DBDA278264E40044886F /* FeedImageDataLoader.swift */,
 				F5342F2626F7C58D00532BDF /* FeedImage.swift */,
 				F5342F2826F7C6EB00532BDF /* FeedLoader.swift */,
 			);
@@ -340,7 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				F5D4DBD7278264A50044886F /* Feed UI */,
-				F5D4DBD6278264900044886F /* Feed Image Loader */,
 				F5763F0F2775EC8400D45045 /* EssentialsFeediOS.docc */,
 			);
 			path = EssentialsFeediOS;
@@ -428,14 +428,6 @@
 				F5D39B932765631C0058E08C /* EssentialsFeedCacheIntegrationTests.swift */,
 			);
 			path = EssentialsFeedCacheIntegrationTests;
-			sourceTree = "<group>";
-		};
-		F5D4DBD6278264900044886F /* Feed Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-				F5D4DBDA278264E40044886F /* FeedImageDataLoader.swift */,
-			);
-			path = "Feed Image Loader";
 			sourceTree = "<group>";
 		};
 		F5D4DBD7278264A50044886F /* Feed UI */ = {
@@ -808,6 +800,7 @@
 				F5D4DC59279CB6F60044886F /* FeedLoadingViewModel.swift in Sources */,
 				F59E00B527067A7E0082EF6C /* RemoteFeedLoader.swift in Sources */,
 				F5B797192736E42D0043EF84 /* LocalFeedImage.swift in Sources */,
+				F5D4DC69279DD8160044886F /* FeedImageDataLoader.swift in Sources */,
 				F587EA3D2730A05E005C2423 /* FeedStore.swift in Sources */,
 				F5F0957D2757D7CC00051F48 /* FeedStore.xcdatamodeld in Sources */,
 				F587EA3B27309FAF005C2423 /* LocalFeedLoader.swift in Sources */,
@@ -852,7 +845,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D4DBDB278264E40044886F /* FeedImageDataLoader.swift in Sources */,
 				F5D4DC422794E6600044886F /* MainQueueDispatchDecorator.swift in Sources */,
 				F5D4DBE6278387C70044886F /* FeedUIComposer.swift in Sources */,
 				F5763F342778DA0E00D45045 /* FeedViewController.swift in Sources */,
