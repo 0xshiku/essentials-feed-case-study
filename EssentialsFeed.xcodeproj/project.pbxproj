@@ -48,8 +48,6 @@
 		F5D4DBDB278264E40044886F /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBDA278264E40044886F /* FeedImageDataLoader.swift */; };
 		F5D4DBE327837FF70044886F /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBE227837FF70044886F /* FeedImageCellController.swift */; };
 		F5D4DBE6278387C70044886F /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBE5278387C70044886F /* FeedUIComposer.swift */; };
-		F5D4DBEE27865C6F0044886F /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBED27865C6F0044886F /* FeedImageViewModel.swift */; };
-		F5D4DBF3278CCAE50044886F /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DBF2278CCAE50044886F /* FeedImagePresenter.swift */; };
 		F5D4DC2D2794433E0044886F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D4DC2C2794433E0044886F /* Feed.storyboard */; };
 		F5D4DC2F279443F50044886F /* Feed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D4DC2E279443F50044886F /* Feed.xcassets */; };
 		F5D4DC312794700F0044886F /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC302794700F0044886F /* UITableView+Dequeueing.swift */; };
@@ -175,8 +173,6 @@
 		F5D4DBDA278264E40044886F /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		F5D4DBE227837FF70044886F /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 		F5D4DBE5278387C70044886F /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
-		F5D4DBED27865C6F0044886F /* FeedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModel.swift; sourceTree = "<group>"; };
-		F5D4DBF2278CCAE50044886F /* FeedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePresenter.swift; sourceTree = "<group>"; };
 		F5D4DC2C2794433E0044886F /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		F5D4DC2E279443F50044886F /* Feed.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Feed.xcassets; sourceTree = "<group>"; };
 		F5D4DC302794700F0044886F /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
@@ -343,7 +339,6 @@
 		F5763F0D2775EC8400D45045 /* EssentialsFeediOS */ = {
 			isa = PBXGroup;
 			children = (
-				F5D4DBEF278B0A6A0044886F /* Feed Presentation */,
 				F5D4DBD7278264A50044886F /* Feed UI */,
 				F5D4DBD6278264900044886F /* Feed Image Loader */,
 				F5763F0F2775EC8400D45045 /* EssentialsFeediOS.docc */,
@@ -509,15 +504,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F5D4DBEF278B0A6A0044886F /* Feed Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F5D4DBED27865C6F0044886F /* FeedImageViewModel.swift */,
-				F5D4DBF2278CCAE50044886F /* FeedImagePresenter.swift */,
-			);
-			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
 		F5D4DC492798C6680044886F /* Feed Presentation */ = {
@@ -872,8 +858,6 @@
 				F5763F342778DA0E00D45045 /* FeedViewController.swift in Sources */,
 				F5D4DC312794700F0044886F /* UITableView+Dequeueing.swift in Sources */,
 				F5D4DC33279472150044886F /* UIImageView+Animations.swift in Sources */,
-				F5D4DBEE27865C6F0044886F /* FeedImageViewModel.swift in Sources */,
-				F5D4DBF3278CCAE50044886F /* FeedImagePresenter.swift in Sources */,
 				F5D4DC5E279CB9930044886F /* UIRefreshControl+Helpers.swift in Sources */,
 				F5D4DBE327837FF70044886F /* FeedImageCellController.swift in Sources */,
 				F5D4DBD52781F6050044886F /* UIView+Shimmering.swift in Sources */,
