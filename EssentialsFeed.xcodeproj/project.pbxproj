@@ -71,7 +71,7 @@
 		F5D4DC6F279F7B1E0044886F /* RemoteFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC6E279F7B1E0044886F /* RemoteFeedImageDataLoader.swift */; };
 		F5D4DC7127A038550044886F /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC7027A038550044886F /* HTTPURLResponse+StatusCode.swift */; };
 		F5D4DC7427A038FF0044886F /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC7327A038FF0044886F /* URLProtocolStub.swift */; };
-		F5D4DC7627A03A6E0044886F /* LocalFeedImageDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC7527A03A6E0044886F /* LocalFeedImageDataLoaderTests.swift */; };
+		F5D4DC7627A03A6E0044886F /* LoadFeedImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC7527A03A6E0044886F /* LoadFeedImageDataFromCacheUseCaseTests.swift */; };
 		F5D4DC7827A085890044886F /* FeedImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC7727A085890044886F /* FeedImageDataStore.swift */; };
 		F5D4DC7A27A085B80044886F /* LocalFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DC7927A085B80044886F /* LocalFeedImageDataLoader.swift */; };
 		F5F0955D274AD6E300051F48 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0955C274AD6E300051F48 /* CodableFeedStoreTests.swift */; };
@@ -205,7 +205,7 @@
 		F5D4DC6E279F7B1E0044886F /* RemoteFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedImageDataLoader.swift; sourceTree = "<group>"; };
 		F5D4DC7027A038550044886F /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		F5D4DC7327A038FF0044886F /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
-		F5D4DC7527A03A6E0044886F /* LocalFeedImageDataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageDataLoaderTests.swift; sourceTree = "<group>"; };
+		F5D4DC7527A03A6E0044886F /* LoadFeedImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		F5D4DC7727A085890044886F /* FeedImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataStore.swift; sourceTree = "<group>"; };
 		F5D4DC7927A085B80044886F /* LocalFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageDataLoader.swift; sourceTree = "<group>"; };
 		F5F0955C274AD6E300051F48 /* CodableFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStoreTests.swift; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 				F5F0955C274AD6E300051F48 /* CodableFeedStoreTests.swift */,
 				F5F09560275429B800051F48 /* FeedStoreSpecs.swift */,
 				F5F0956A27568D3E00051F48 /* CoreDataFeedStoreTests.swift */,
-				F5D4DC7527A03A6E0044886F /* LocalFeedImageDataLoaderTests.swift */,
+				F5D4DC7527A03A6E0044886F /* LoadFeedImageDataFromCacheUseCaseTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -872,7 +872,7 @@
 				F5F0956927565F0E00051F48 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */,
 				F5F095652756589200051F48 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
 				F5CD44A027370F7700F6456A /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
-				F5D4DC7627A03A6E0044886F /* LocalFeedImageDataLoaderTests.swift in Sources */,
+				F5D4DC7627A03A6E0044886F /* LoadFeedImageDataFromCacheUseCaseTests.swift in Sources */,
 				F5F09561275429B800051F48 /* FeedStoreSpecs.swift in Sources */,
 				F52F83BB271B1E8200970226 /* URLSessionHTTPClientTests.swift in Sources */,
 				F5F0956B27568D3E00051F48 /* CoreDataFeedStoreTests.swift in Sources */,
