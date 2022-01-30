@@ -5,8 +5,8 @@
 //  Created by Chico Pereira on 03/01/2022.
 //
 
-import UIKit
 import EssentialsFeed
+import UIKit
 
 protocol FeedImageCellControllerDelegate {
     func didRequestImage()
@@ -50,4 +50,3 @@ final class FeedImageCellController: FeedImageView {
         cell = nil
     }
 }
-

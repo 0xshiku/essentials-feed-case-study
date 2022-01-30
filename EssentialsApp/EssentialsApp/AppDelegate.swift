@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  EssentialsPrototype
+//  EssentialsApp
 //
-//  Created by Chico Pereira on 22/12/2021.
+//  Created by Chico Pereira on 25/01/2022.
 //
 
 import UIKit

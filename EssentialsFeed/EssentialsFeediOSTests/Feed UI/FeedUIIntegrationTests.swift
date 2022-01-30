@@ -20,7 +20,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
     }
     
-    func test_loadFeedActions_requestFeedFromLeader() {
+    func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requests before view is loaded")
         
