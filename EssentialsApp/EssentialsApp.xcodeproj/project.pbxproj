@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5A0B8C527A83E5A003D32D9 /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A0B8C427A83E5A003D32D9 /* FeedLoaderWithFallbackComposite.swift */; };
 		F5D4DCDA27A0BF030044886F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DCD927A0BF030044886F /* AppDelegate.swift */; };
 		F5D4DCDC27A0BF030044886F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DCDB27A0BF030044886F /* SceneDelegate.swift */; };
 		F5D4DCDE27A0BF030044886F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DCDD27A0BF030044886F /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F5A0B8C427A83E5A003D32D9 /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		F5D4DCD627A0BF030044886F /* EssentialsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D4DCD927A0BF030044886F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5D4DCDB27A0BF030044886F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				F5D4DCE227A0BF040044886F /* Assets.xcassets */,
 				F5D4DCE427A0BF040044886F /* LaunchScreen.storyboard */,
 				F5D4DCE727A0BF040044886F /* Info.plist */,
+				F5A0B8C427A83E5A003D32D9 /* FeedLoaderWithFallbackComposite.swift */,
 			);
 			path = EssentialsApp;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			files = (
 				F5D4DCDE27A0BF030044886F /* ViewController.swift in Sources */,
 				F5D4DCDA27A0BF030044886F /* AppDelegate.swift in Sources */,
+				F5A0B8C527A83E5A003D32D9 /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				F5D4DCDC27A0BF030044886F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

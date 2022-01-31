@@ -5,32 +5,11 @@
 //  Created by Chico Pereira on 26/01/2022.
 //
 
-import XCTest
+import EssentialsApp
 import EssentialsFeed
-
-class FeedLoaderWithFallbackComposite: FeedLoader {
-    private let primary: FeedLoader
-    private let fallback: FeedLoader
-    
-    init (primary: FeedLoader, fallback: FeedLoader) {
-        self.primary = primary
-        self.fallback = fallback
-    }
-    
-    func load(completion: @escaping (FeedLoader.Result) -> Void) {
-        primary.load { [weak self] result in
-            switch result {
-            case .success:
-                completion(result)
-            case .failure:
-                self?.fallback.load(completion: completion)
-            }
-        }
-    }
-}
+import XCTest
 
 class FeedLoaderWithFallbackCompositeTests: XCTestCase {
-    
     func test_load_deliversPrimaryFeedOnPrimaryLoaderSuccess() {
         let primaryFeed = uniqueFeed()
         let fallbackFeed = uniqueFeed()
@@ -69,7 +48,7 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
         let exp = expectation(description: "Wait for load completion")
         
         sut.load { receivedResult in
-            switch(receivedResult, expectedResult) {
+            switch (receivedResult, expectedResult) {
             case let (.success(receivedFeed), .success(expectedFeed)):
                 XCTAssertEqual(receivedFeed, expectedFeed, file: file, line: line)
                 
@@ -99,7 +78,6 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
     }
     
     private class LoaderStub: FeedLoader {
-        
         private let result: FeedLoader.Result
         
         init(result: FeedLoader.Result) {
@@ -110,5 +88,4 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
             completion(result)
         }
     }
-    
 }
