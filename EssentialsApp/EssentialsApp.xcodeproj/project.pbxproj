@@ -18,8 +18,6 @@
 		F5D4DD0F27A0BF860044886F /* EssentialsFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D4DD0E27A0BF860044886F /* EssentialsFeediOS.framework */; };
 		F5D4DD1027A0BF860044886F /* EssentialsFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D4DD0E27A0BF860044886F /* EssentialsFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D4DD1227A14B730044886F /* FeedLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DD1127A14B730044886F /* FeedLoaderWithFallbackCompositeTests.swift */; };
-		F5D4DD1527A14C0B0044886F /* EssentialsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DD1327A14C0B0044886F /* EssentialsAppUITests.swift */; };
-		F5D4DD1627A14C0B0044886F /* EssentialsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4DD1427A14C0B0044886F /* EssentialsAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +66,6 @@
 		F5D4DD0A27A0BF810044886F /* EssentialsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D4DD0E27A0BF860044886F /* EssentialsFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialsFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D4DD1127A14B730044886F /* FeedLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
-		F5D4DD1327A14C0B0044886F /* EssentialsAppUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EssentialsAppUITests.swift; path = ../../../.Trash/EssentialsAppUITests.swift; sourceTree = "<group>"; };
-		F5D4DD1427A14C0B0044886F /* EssentialsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EssentialsAppUITestsLaunchTests.swift; path = ../../../.Trash/EssentialsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +141,6 @@
 		F5D4DCF927A0BF050044886F /* EssentialsAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F5D4DD1327A14C0B0044886F /* EssentialsAppUITests.swift */,
-				F5D4DD1427A14C0B0044886F /* EssentialsAppUITestsLaunchTests.swift */,
 			);
 			path = EssentialsAppUITests;
 			sourceTree = "<group>";
@@ -312,8 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D4DD1527A14C0B0044886F /* EssentialsAppUITests.swift in Sources */,
-				F5D4DD1627A14C0B0044886F /* EssentialsAppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
