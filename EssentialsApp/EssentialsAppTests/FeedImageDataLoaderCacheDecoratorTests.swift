@@ -79,6 +79,18 @@ class FeedImageDataLoaderCacheDecoratorTests: XCTestCase {
         XCTAssertEqual(loader.cancelledURLs, [url], "Expected to cancel URL loading from loader")
     }
     
+    func test_loadImageData_cachesLoadedDataOnLoaderSuccess() {
+        let cache = CacheSpy()
+        let url = anyURL()
+        let imageData = anyData()
+        let (sut, loader) = makeSUT(cache: cache)
+        
+        _ = sut.loadImageData(from: url) { _ in }
+        loader.complete(with: imageData)
+        
+        XCTAssertEqual(cache.messages, [.save(data: imageData, for: url)], "Expected to cache loaded image data on success")
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(cache: CacheSpy = .init(), file: StaticString = #file, line: UInt = #line) -> (FeedImageDataLoaderCacheDecorator, FeedImageDataLoaderSpy) {
