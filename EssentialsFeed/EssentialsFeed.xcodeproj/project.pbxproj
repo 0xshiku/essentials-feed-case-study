@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F52E2B7427DCF0E4006D1ED2 /* FeedImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E2B7327DCF0E4006D1ED2 /* FeedImageDataCache.swift */; };
 		F52F83B6271237E000970226 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F83B5271237E000970226 /* FeedItemsMapper.swift */; };
 		F52F83BB271B1E8200970226 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F83BA271B1E8200970226 /* URLSessionHTTPClientTests.swift */; };
 		F52F83BE2720CB2A00970226 /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F83BD2720CB2A00970226 /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
@@ -148,6 +149,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F52E2B7327DCF0E4006D1ED2 /* FeedImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataCache.swift; sourceTree = "<group>"; };
 		F52F83B5271237E000970226 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		F52F83BA271B1E8200970226 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		F52F83BD2720CB2A00970226 /* XCTestCase+MemoryLeakTrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTrackingHelper.swift"; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				F5342F2626F7C58D00532BDF /* FeedImage.swift */,
 				F5342F2826F7C6EB00532BDF /* FeedLoader.swift */,
 				F5D0AA2A27D5218B008E926F /* FeedCache.swift */,
+				F52E2B7327DCF0E4006D1ED2 /* FeedImageDataCache.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				F5F0955F2752C1A700051F48 /* CodableFeedStore.swift in Sources */,
 				F59E00B727067AC50082EF6C /* HTTPClient.swift in Sources */,
 				F5342F2726F7C58D00532BDF /* FeedImage.swift in Sources */,
+				F52E2B7427DCF0E4006D1ED2 /* FeedImageDataCache.swift in Sources */,
 				F52F83C02726243E00970226 /* URLSessionHTTPClient.swift in Sources */,
 				F5D4DC67279DD14A0044886F /* FeedImageViewModel.swift in Sources */,
 				F5D4DC6F279F7B1E0044886F /* RemoteFeedImageDataLoader.swift in Sources */,
