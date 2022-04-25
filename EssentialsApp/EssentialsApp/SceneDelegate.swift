@@ -7,7 +7,10 @@
 
 import CoreData
 import EssentialsFeed
-import EssentialsFeediOS
+import EssentialsFeedAPI
+import EssentialsFeedAPIInfrastructure
+import EssentialsFeedCache
+import EssentialsFeedCacheInfrastructure
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

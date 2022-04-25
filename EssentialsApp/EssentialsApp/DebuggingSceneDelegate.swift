@@ -7,6 +7,7 @@
 
 #if DEBUG
 import EssentialsFeed
+import EssentialsFeedAPI
 import UIKit
 
 class DebuggingSceneDelegate: SceneDelegate {

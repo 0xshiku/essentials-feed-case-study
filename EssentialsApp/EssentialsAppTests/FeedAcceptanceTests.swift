@@ -7,6 +7,7 @@
 
 import XCTest
 import EssentialsFeed
+import EssentialsFeedAPI
 import EssentialsFeediOS
 @testable import EssentialsApp
 

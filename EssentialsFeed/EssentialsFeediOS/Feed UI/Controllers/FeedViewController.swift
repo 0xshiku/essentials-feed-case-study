@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import EssentialsFeed
+import EssentialsFeedPresentation
 
 public protocol FeedViewControllerDelegate {
     func didRequestFeedRefresh()

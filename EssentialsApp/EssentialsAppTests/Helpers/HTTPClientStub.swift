@@ -7,6 +7,7 @@
 
 import Foundation
 import EssentialsFeed
+import EssentialsFeedAPI
 
 class HTTPClientStub: HTTPClient {
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EssentialsFeedCache
 import EssentialsFeed
 
 class InMemoryFeedStore {
