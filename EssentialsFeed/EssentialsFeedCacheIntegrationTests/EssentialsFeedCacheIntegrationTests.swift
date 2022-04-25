@@ -7,6 +7,8 @@
 
 import XCTest
 import EssentialsFeed
+import EssentialsFeedCache
+import EssentialsFeedCacheInfrastructure
 
 class EssentialsFeedCacheIntegrationTests: XCTestCase {
     
