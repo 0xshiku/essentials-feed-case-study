@@ -2,8 +2,10 @@
 //  FeedImageDataLoaderCacheDecorator.swift
 //  EssentialsApp
 //
-//  Created by Chico Pereira on 12/03/2022.
+//  Created by Chico Pereira on 03/05/2022.
 //
+
+import Foundation
 
 import Foundation
 import EssentialsFeed
