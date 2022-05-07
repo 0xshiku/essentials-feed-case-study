@@ -5,30 +5,29 @@
 //  Created by Chico Pereira on 07/05/2022.
 //
 
-import Foundation
 import Combine
 import EssentialsFeed
+import Foundation
 
 public extension FeedImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
-    
+
     func loadImageDataPublisher(from url: URL) -> Publisher {
-        
         var task: FeedImageDataLoaderTask?
-        
+
         return Deferred {
-                Future { completion in
-                    task = self.loadImageData(from: url, completion: completion)
-                }
+            Future { completion in
+                task = self.loadImageData(from: url, completion: completion)
             }
-            .handleEvents(receiveCancel: { task?.cancel() })
-            .eraseToAnyPublisher()
+        }
+        .handleEvents(receiveCancel: { task?.cancel() })
+        .eraseToAnyPublisher()
     }
 }
 
 extension Publisher where Output == Data {
     func caching(to cache: FeedImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
-        handleEvents(receiveOutput: {data in
+        handleEvents(receiveOutput: { data in
             cache.saveIgnoringResult(data, for: url)
         }).eraseToAnyPublisher()
     }
@@ -42,12 +41,18 @@ private extension FeedImageDataCache {
 
 public extension FeedLoader {
     typealias Publisher = AnyPublisher<[FeedImage], Error>
-    
+
     func loadPublisher() -> Publisher {
-            Deferred {
-                Future(self.load)
-            }
-            .eraseToAnyPublisher()
+        Deferred {
+            Future(self.load)
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher {
+    func fallback(to fallbackPublisher: @escaping () -> AnyPublisher<Output, Failure>) -> AnyPublisher<Output, Failure> {
+        self.catch { _ in fallbackPublisher() }.eraseToAnyPublisher()
     }
 }
 
@@ -58,14 +63,8 @@ extension Publisher where Output == [FeedImage] {
 }
 
 private extension FeedCache {
-     func saveIgnoringResult(_ feed: [FeedImage]) {
-         save(feed) { _ in }
-     }
- }
-
-extension Publisher {
-    func fallback(to fallbackPublisher: @escaping () -> AnyPublisher<Output, Failure>) -> AnyPublisher<Output, Failure> {
-        self.catch { _ in fallbackPublisher() }.eraseToAnyPublisher()
+    func saveIgnoringResult(_ feed: [FeedImage]) {
+        save(feed) { _ in }
     }
 }
 
@@ -76,36 +75,48 @@ extension Publisher {
 }
 
 extension DispatchQueue {
-    
     static var immediateWhenOnMainQueueScheduler: ImmediateWhenOnMainQueueScheduler {
-        ImmediateWhenOnMainQueueScheduler()
+        ImmediateWhenOnMainQueueScheduler.shared
     }
-    
+
     struct ImmediateWhenOnMainQueueScheduler: Scheduler {
         typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType
         typealias SchedulerOptions = DispatchQueue.SchedulerOptions
-        
+
         var now: SchedulerTimeType {
             DispatchQueue.main.now
         }
-        
-        var minimumTolerance: DispatchQueue.SchedulerTimeType.Stride {
+
+        var minimumTolerance: SchedulerTimeType.Stride {
             DispatchQueue.main.minimumTolerance
         }
         
+        private static let key = DispatchSpecificKey<UInt8>()
+        private static let value = UInt8.max
+        
+        static let shared = Self()
+        
+        private init() {
+            DispatchQueue.main.setSpecific(key: Self.key, value: Self.value)
+        }
+        
+        private func isMainQueue() -> Bool {
+            return DispatchQueue.getSpecific(key: Self.key) == Self.value
+        }
+
         func schedule(options: SchedulerOptions?, _ action: @escaping () -> Void) {
-            guard Thread.isMainThread else {
+            guard isMainQueue() else {
                 return DispatchQueue.main.schedule(options: options, action)
             }
-            
+
             action()
         }
-        
-        func schedule(after date: DispatchQueue.SchedulerTimeType, tolerance: DispatchQueue.SchedulerTimeType.Stride, options: DispatchQueue.SchedulerOptions?, _ action: @escaping () -> Void) {
+
+        func schedule(after date: SchedulerTimeType, tolerance: SchedulerTimeType.Stride, options: SchedulerOptions?, _ action: @escaping () -> Void) {
             DispatchQueue.main.schedule(after: date, tolerance: tolerance, options: options, action)
         }
-        
-        func schedule(after date: DispatchQueue.SchedulerTimeType, interval: DispatchQueue.SchedulerTimeType.Stride, tolerance: DispatchQueue.SchedulerTimeType.Stride, options: DispatchQueue.SchedulerOptions?, _ action: @escaping () -> Void) -> Cancellable {
+
+        func schedule(after date: SchedulerTimeType, interval: SchedulerTimeType.Stride, tolerance: SchedulerTimeType.Stride, options: SchedulerOptions?, _ action: @escaping () -> Void) -> Cancellable {
             DispatchQueue.main.schedule(after: date, interval: interval, tolerance: tolerance, options: options, action)
         }
     }
