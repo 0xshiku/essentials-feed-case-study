@@ -580,6 +580,8 @@
 		F5342F0E26F7C54300532BDF /* EssentialsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				F5EC5FFA283A87E700675A8E /* Shared API Infra */,
+				F5EC5FF8283A873E00675A8E /* Shared API */,
 				F5EC5FF5283191F600675A8E /* Image Comments Feature */,
 				F5342F2A26F7D8D200532BDF /* Feed Feature */,
 				F5342F1026F7C54300532BDF /* Info.plist */,
@@ -648,7 +650,6 @@
 				F5C6FD042815AC1A009D4F03 /* Helpers */,
 				F52F83B5271237E000970226 /* FeedItemsMapper.swift */,
 				F59E00B427067A7E0082EF6C /* RemoteFeedLoader.swift */,
-				F59E00B627067AC50082EF6C /* HTTPClient.swift */,
 				F5B797162736E33B0043EF84 /* RemoteFeedItem.swift */,
 				F5D4DC6E279F7B1E0044886F /* RemoteFeedImageDataLoader.swift */,
 				F5EC5FF1282D7E6400675A8E /* RemoteImageCommentsLoader.swift */,
@@ -905,6 +906,21 @@
 				F5EC5FF62831921000675A8E /* ImageComment.swift */,
 			);
 			path = "Image Comments Feature";
+			sourceTree = "<group>";
+		};
+		F5EC5FF8283A873E00675A8E /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				F59E00B627067AC50082EF6C /* HTTPClient.swift */,
+			);
+			path = "Shared API";
+			sourceTree = "<group>";
+		};
+		F5EC5FFA283A87E700675A8E /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
 		F5F095742757D61200051F48 /* CoreData */ = {
