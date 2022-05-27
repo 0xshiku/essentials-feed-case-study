@@ -30,8 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var localFeedLoader: LocalFeedLoader = {
         LocalFeedLoader(store: store, currentDate: Date.init)
     }()
-    private lazy var remoteFeedLoader: RemoteFeedLoader = {
-        RemoteFeedLoader(url: remoteURL, client: httpClient)
+    private lazy var remoteFeedLoader: RemoteLoader = {
+        RemoteLoader(url: remoteURL, client: httpClient, mapper: FeedItemsMapper.map)
     }()
     
     convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore) {
@@ -91,7 +91,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
-    private func makeRemoteFeedLoaderWithLocalFallback() -> RemoteFeedLoader.Publisher {
+    private func makeRemoteFeedLoaderWithLocalFallback() -> FeedLoader.Publisher {
         return remoteFeedLoader
             .loadPublisher()
             .caching(to: localFeedLoader)
@@ -113,6 +113,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-extension RemoteLoader: FeedLoader where Resource == [FeedImage] {
-    
-}
+extension RemoteLoader: FeedLoader where Resource == [FeedImage] {}
+
+//public typealias RemoteImageCommentsLoader = RemoteLoader<[ImageComment]>
+//
+//public extension RemoteImageCommentsLoader {
+//    convenience init(url: URL, client: HTTPClient) {
+//        self.init(url: url, client: client, mapper: ImageCommentsMapper.map)
+//    }
+//}
+
+//public typealias RemoteFeedLoader = RemoteLoader<[FeedImage]>
+//
+//public extension RemoteFeedLoader {
+//    convenience init(url: URL, client: HTTPClient) {
+//        self.init(url: url, client: client, mapper: FeedItemsMapper.map)
+//    }
+//}
+
