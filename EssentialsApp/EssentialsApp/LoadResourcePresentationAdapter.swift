@@ -37,6 +37,7 @@ final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
                     self?.presenter?.didFinishLoading(with: resource)
                 })
     }
+    
 }
 
 extension LoadResourcePresentationAdapter: FeedViewControllerDelegate {
