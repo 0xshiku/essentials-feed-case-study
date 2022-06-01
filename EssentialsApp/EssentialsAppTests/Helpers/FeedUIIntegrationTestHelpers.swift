@@ -81,7 +81,7 @@ class LoaderSpy: FeedLoader, FeedImageDataLoader {
     }
 }
 
-extension FeedViewController {
+extension ListViewController {
     func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
     }
