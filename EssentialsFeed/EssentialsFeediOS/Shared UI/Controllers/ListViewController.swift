@@ -5,13 +5,15 @@
 //  Created by Chico Pereira on 26/12/2021.
 //
 
-import UIKit
 import EssentialsFeedPresentation
+import UIKit
 
-final public class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
+public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
+    public private(set) var errorView = ErrorView()
     
-    private var loadingControllers = [IndexPath: CellController]()
-    private(set) public var errorView = ErrorView()
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = .init(tableView: tableView) { tableView, index, controller -> UITableViewCell? in
+        controller.dataSource.tableView(tableView, cellForRowAt: index)
+    }
     
     private var tableModel = [CellController]() {
         didSet { tableView.reloadData() }
@@ -19,9 +21,10 @@ final public class ListViewController: UITableViewController, UITableViewDataSou
     
     public var onRefresh: (() -> Void)?
     
-    public override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = dataSource
         configureErrorView()
         refresh()
     }
@@ -48,10 +51,16 @@ final public class ListViewController: UITableViewController, UITableViewDataSou
         }
     }
     
-    public override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         tableView.sizeTableHeaderToFit()
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            tableView.reloadData()
+        }
     }
     
     @IBAction private func refresh() {
@@ -59,57 +68,44 @@ final public class ListViewController: UITableViewController, UITableViewDataSou
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        loadingControllers = [:]
         refreshControl?.update(isRefreshing: viewModel.isLoading)
     }
     
     public func display(_ cellControllers: [CellController]) {
-        tableModel = cellControllers
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CellController>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(cellControllers, toSection: 0)
+        if #available(iOS 15.0, *) {
+            dataSource.applySnapshotUsingReloadData(snapshot)
+        } else {
+            dataSource.apply(snapshot)
+        }
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
         errorView.message = viewModel.message
     }
     
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableModel.count
-    }
-    
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let dataSource = cellController(forRowAt: indexPath).dataSource
-        return dataSource.tableView(tableView, cellForRowAt: indexPath)
-    }
-    
-    
-    public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let delegate = removeLoadingController(forRowAt: indexPath)?.delegate
+    override public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let delegate = cellController(at: indexPath)?.delegate
         delegate?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            let dataSourcePrefetch = cellController(forRowAt: indexPath).dataSourcePrefetching
+            let dataSourcePrefetch = cellController(at: indexPath)?.dataSourcePrefetching
             dataSourcePrefetch?.tableView(tableView, prefetchRowsAt: [indexPath])
         }
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            let dataSourcePrefetch = removeLoadingController(forRowAt: indexPath)?.dataSourcePrefetching
+            let dataSourcePrefetch = cellController(at: indexPath)?.dataSourcePrefetching
             dataSourcePrefetch?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
         }
     }
     
-    private func cellController(forRowAt indexPath: IndexPath) -> CellController {
-        let controller  = tableModel[indexPath.row]
-        loadingControllers[indexPath] = controller
-        return controller
-    }
-    
-    private func removeLoadingController(forRowAt indexPath: IndexPath) -> CellController? {
-        let controller = loadingControllers[indexPath]
-        loadingControllers[indexPath] = nil
-        return controller
+    private func cellController(at indexPath: IndexPath) -> CellController? {
+        dataSource.itemIdentifier(for: indexPath)
     }
 }
-
