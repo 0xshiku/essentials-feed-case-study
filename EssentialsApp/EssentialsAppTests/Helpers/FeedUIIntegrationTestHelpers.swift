@@ -11,26 +11,6 @@ import EssentialsFeediOS
 import UIKit
 import XCTest
 
-extension FeedUIIntegrationTests {
-    
-    private class DummyView: ResourceView {
-        func display(_ viewModel: Any) {}
-    }
-    
-    var loadError: String {
-        LoadResourcePresenter<Any, DummyView>.loadError
-    }
-    
-    var feedTitle: String {
-        FeedPresenter.title
-    }
-    
-    var commentsTitle: String {
-        ImageCommentsPresenter.title
-    }
-    
-}
-
 class LoaderSpy: FeedLoader, FeedImageDataLoader {
     // MARK: - FeedLoader
 
@@ -257,4 +237,20 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return img!
     }
+}
+
+private class DummyView: ResourceView {
+    func display(_ viewModel: Any) {}
+}
+
+var loadError: String {
+    LoadResourcePresenter<Any, DummyView>.loadError
+}
+
+var feedTitle: String {
+    FeedPresenter.title
+}
+
+var commentsTitle: String {
+    ImageCommentsPresenter.title
 }
