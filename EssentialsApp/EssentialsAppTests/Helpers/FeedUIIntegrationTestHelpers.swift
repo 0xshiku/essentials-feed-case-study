@@ -25,6 +25,10 @@ extension FeedUIIntegrationTests {
         FeedPresenter.title
     }
     
+    var commentsTitle: String {
+        ImageCommentsPresenter.title
+    }
+    
 }
 
 class LoaderSpy: FeedLoader, FeedImageDataLoader {
