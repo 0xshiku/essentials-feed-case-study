@@ -25,6 +25,6 @@ public class ImageCommentCellController: NSObject, UITableViewDataSource {
         cell.usernameLabel.text = model.username
         cell.dateLabel.text = model.date
         return cell
-    }
+    } 
     
 }
