@@ -128,11 +128,15 @@ extension ListViewController {
     var isShowingLoadingIndicator: Bool {
         return refreshControl?.isRefreshing == true
     }
+    
+    func numberOfRows(in section: Int) -> Int {
+         tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
+     }
 }
 
 extension ListViewController {
     func numberOfRenderedComments() -> Int {
-        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: commentsSection)
+        numberOfRows(in: commentsSection)
     }
     
     func commentMessage(at row: Int) -> String? {
@@ -165,7 +169,7 @@ extension ListViewController {
 extension ListViewController {
 
     func numberOfRenderedFeedImageViews() -> Int {
-        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: feedImagesSection)
+        numberOfRows(in: feedImagesSection)
     }
 
     func feedImageView(at row: Int) -> UITableViewCell? {
