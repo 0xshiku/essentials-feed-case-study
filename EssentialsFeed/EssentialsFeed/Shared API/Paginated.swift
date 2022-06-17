@@ -12,10 +12,10 @@ public struct Paginated<Item> {
     public typealias LoadMoreCompletion = (Result<Self, Error>) -> Void
     
     public let items: [Item]
-    public let canLoadMore: ((@escaping LoadMoreCompletion) -> Void)?
+    public let loadMore: ((@escaping LoadMoreCompletion) -> Void)?
     
-    public init(items: [Item], canLoadMore: ((@escaping LoadMoreCompletion) -> Void)? = nil) {
+    public init(items: [Item], loadMore: ((@escaping LoadMoreCompletion) -> Void)? = nil) {
         self.items = items
-        self.canLoadMore = canLoadMore
+        self.loadMore = loadMore
     }
 }

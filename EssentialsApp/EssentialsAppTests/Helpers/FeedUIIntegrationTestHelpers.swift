@@ -14,51 +14,63 @@ import XCTest
 
 extension FeedUIIntegrationTests {
     
-    class LoaderSpy {
+    class LoaderSpy: FeedImageDataLoader {
         
         // MARK: - FeedLoader
         
         private var feedRequests = [PassthroughSubject<Paginated<FeedImage>, Error>]()
+        private var loadMoreRequests = [PassthroughSubject<Paginated<FeedImage>, Error>]()
         
         var loadFeedCallCount: Int {
             return feedRequests.count
         }
         
+        var loadMoreCallCount: Int {
+            return loadMoreRequests.count
+        }
+                
         func loadPublisher() -> AnyPublisher<Paginated<FeedImage>, Error> {
             let publisher = PassthroughSubject<Paginated<FeedImage>, Error>()
             feedRequests.append(publisher)
             return publisher.eraseToAnyPublisher()
         }
+
+        func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
+            feedRequests[index].send(Paginated(items: feed, loadMorePublisher: { [weak self] in
+                let publisher = PassthroughSubject<Paginated<FeedImage>, Error>()
+                self?.loadMoreRequests.append(publisher)
+                return publisher.eraseToAnyPublisher()
+            }))
+        }
         
         func completeFeedLoadingWithError(at index: Int = 0) {
-            feedRequests[index].send(completion: .failure(anyNSError()))
+            let error = NSError(domain: "an error", code: 0)
+            feedRequests[index].send(completion: .failure(error))
         }
         
-        func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
-            feedRequests[index].send(Paginated(items: feed))
-        }
-        
-        // MARK: - LoadMoreFeedLoader
-        
-        private var loadMoreRequests = [PassthroughSubject<Paginated<FeedImage>, Error>]()
-        
-        var loadMoreCallCount: Int {
-            return loadMoreRequests.count
-        }
-        
-        func loadMorePublisher() -> AnyPublisher<Paginated<FeedImage>, Error> {
-            let publisher = PassthroughSubject<Paginated<FeedImage>, Error>()
-            loadMoreRequests.append(publisher)
-            return publisher.eraseToAnyPublisher()
+        func completeLoadMore(with feed: [FeedImage] = [], lastPage: Bool = false, at index: Int = 0) {
+            loadMoreRequests[index].send(Paginated(items: feed, loadMorePublisher: lastPage ? nil : { [weak self] in
+                let publisher = PassthroughSubject<Paginated<FeedImage>, Error>()
+                self?.loadMoreRequests.append(publisher)
+                return publisher.eraseToAnyPublisher()
+            }))
         }
         
         func completeLoadMoreWithError(at index: Int = 0) {
-            loadMoreRequests[index].send(completion: .failure(anyNSError()))
+            let error = NSError(domain: "an error", code: 0)
+            loadMoreRequests[index].send(completion: .failure(error))
         }
         
         // MARK: - FeedImageDataLoader
         
-        private var imageRequests = [(url: URL, publisher: PassthroughSubject<Data, Error>)]()
+        private struct TaskSpy: FeedImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
+        }
+        
+        private var imageRequests = [(url: URL, completion: (FeedImageDataLoader.Result) -> Void)]()
         
         var loadedImageURLs: [URL] {
             return imageRequests.map { $0.url }
@@ -66,21 +78,18 @@ extension FeedUIIntegrationTests {
         
         private(set) var cancelledImageURLs = [URL]()
         
-        func loadImageDataPublisher(from url: URL) -> AnyPublisher<Data, Error> {
-            let publisher = PassthroughSubject<Data, Error>()
-            imageRequests.append((url, publisher))
-            return publisher.handleEvents(receiveCancel: { [weak self] in
-                self?.cancelledImageURLs.append(url)
-            }).eraseToAnyPublisher()
+        func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+            imageRequests.append((url, completion))
+            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }
         
         func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
-            imageRequests[index].publisher.send(imageData)
-            imageRequests[index].publisher.send(completion: .finished)
+            imageRequests[index].completion(.success(imageData))
         }
         
         func completeImageLoadingWithError(at index: Int = 0) {
-            imageRequests[index].publisher.send(completion: .failure(anyNSError()))
+            let error = NSError(domain: "an error", code: 0)
+            imageRequests[index].completion(.failure(error))
         }
     }
     
@@ -133,6 +142,14 @@ extension ListViewController {
         let index = IndexPath(row: row, section: feedImagesSection)
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
+    
+    func simulateLoadMoreFeedAction() {
+        guard let view = cell(row: 0, section: feedLoadMoreSection) else { return }
+        
+        let delegate = tableView.delegate
+        let index = IndexPath(row: 0, section: feedLoadMoreSection)
+        delegate?.tableView?(tableView, willDisplay: view, forRowAt: index)
+    }
 
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateFeedImageViewVisible(at: index)?.renderedImage
@@ -153,6 +170,15 @@ extension ListViewController {
     func numberOfRows(in section: Int) -> Int {
          tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
      }
+    
+    func cell(row: Int, section: Int) -> UITableViewCell? {
+        guard numberOfRows(in: section) > row else {
+            return nil
+        }
+        let ds = tableView.dataSource
+        let index = IndexPath(row: row, section: section)
+        return ds?.tableView(tableView, cellForRowAt: index)
+    }
 }
 
 extension ListViewController {
@@ -204,6 +230,10 @@ extension ListViewController {
 
     var feedImagesSection: Int {
         return 0
+    }
+    
+    var feedLoadMoreSection: Int {
+        return 1
     }
 }
 
