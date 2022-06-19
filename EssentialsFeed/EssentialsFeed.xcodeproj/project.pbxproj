@@ -1565,18 +1565,18 @@
 			projectRoot = "";
 			targets = (
 				F5342F0B26F7C54300532BDF /* EssentialsFeed */,
-				F5897A1A272A0EE000CE2109 /* EssentialsFeedAPIEndToEndTests */,
-				F5D39B902765631C0058E08C /* EssentialsFeedCacheIntegrationTests */,
 				F5763F0B2775EC8400D45045 /* EssentialsFeediOS */,
 				F5763F142775EC8500D45045 /* EssentialsFeediOSTests */,
 				F5C6FCE22815AB45009D4F03 /* EssentialsFeedAPI */,
 				F5C6FCE92815AB46009D4F03 /* EssentialsFeedAPITests */,
 				F5C6FD162815CB5C009D4F03 /* EssentialsFeedAPIInfrastructure */,
+				F5897A1A272A0EE000CE2109 /* EssentialsFeedAPIEndToEndTests */,
 				F5C6FD1D2815CB5C009D4F03 /* EssentialsFeedAPIInfrastructureTests */,
 				F5C6FD432815CFFF009D4F03 /* EssentialsFeedCache */,
 				F5C6FD4A2815CFFF009D4F03 /* EssentialsFeedCacheTests */,
 				F5C6FD842816D9A3009D4F03 /* EssentialsFeedCacheInfrastructure */,
 				F5C6FD8B2816D9A3009D4F03 /* EssentialsFeedCacheInfrastructureTests */,
+				F5D39B902765631C0058E08C /* EssentialsFeedCacheIntegrationTests */,
 				F5C6FDC62816E164009D4F03 /* EssentialsFeedPresentation */,
 				F5C6FDCD2816E164009D4F03 /* EssentialsFeedPresentationTests */,
 			);

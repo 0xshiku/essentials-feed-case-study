@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var httpClient: HTTPClient = {
-        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        HTTPClientProfilingDecorator(decoratee: URLSessionHTTPClient(session: URLSession(configuration: .ephemeral)), logger: logger)
+
     }()
     
     private lazy var logger = Logger(subsystem: "com.chicopereira.EssentialsAppCaseStudy", category: "main")
@@ -126,14 +127,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> FeedImageDataLoader.Publisher {
         let localImageLoader = LocalFeedImageDataLoader(store: store)
-
+        let client = HTTPClientProfilingDecorator(decoratee: httpClient, logger: logger)
         return localImageLoader
             .loadImageDataPublisher(from: url)
-            .fallback(to: { [httpClient] in
-                httpClient
+            .logCacheMisses(url: url, logger: logger)
+            .fallback(to: {
+                client
                     .getPublisher(url: url)
                     .tryMap(FeedImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
             })
+    }
+}
+
+extension Publisher {
+    func logCacheMisses(url: URL, logger: Logger) -> AnyPublisher<Output, Failure> {
+        return handleEvents(
+            receiveCompletion: { result in
+                if case .failure = result {
+                    logger.trace("Cache miss for url: \(url)")
+                }
+            }
+        ).eraseToAnyPublisher()
+    }
+}
+
+private class HTTPClientProfilingDecorator: HTTPClient {
+    
+    private let decoratee: HTTPClient
+    private let logger: Logger
+    
+    init(decoratee: HTTPClient, logger: Logger) {
+        self.decoratee = decoratee
+        self.logger = logger
+    }
+    
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
+        let startTime = CACurrentMediaTime()
+        return decoratee.get(from: url) { [logger] result in
+            if case let .failure(error) = result {
+                logger.trace("Failed to load url: \(url) with \(error.localizedDescription)")
+            }
+            let elapsed = CACurrentMediaTime() - startTime
+            logger.trace("Finished loading url: \(url) in \(elapsed) seconds")
+            completion(result)
+        }
     }
 }
