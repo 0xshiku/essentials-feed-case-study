@@ -18,6 +18,8 @@ import Combine
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
+    private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(label: "com.chicopereira.infra.queue", qos: .userInitiated, attributes: .concurrent).eraseToAnyScheduler()
+    
     private lazy var httpClient: HTTPClient = {
         HTTPClientProfilingDecorator(decoratee: URLSessionHTTPClient(session: URLSession(configuration: .ephemeral)), logger: logger)
 
@@ -51,10 +53,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             imageLoader: makeLocalImageLoaderWithRemoteFallback,
             selection: showComments))
 
-    convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore) {
+    convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore, scheduler: AnyDispatchQueueScheduler) {
         self.init()
         self.httpClient = httpClient
         self.store = store
+        self.scheduler = scheduler
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -93,6 +96,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                .caching(to: localFeedLoader)
                .fallback(to: localFeedLoader.loadPublisher)
                .map(makeFirstPage)
+               .subscribe(on: scheduler)
                .eraseToAnyPublisher()
        }
 
@@ -101,8 +105,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                .zip(makeRemoteFeedLoader(after: last))
                .map { (cachedItems, newItems) in
                    (cachedItems + newItems, newItems.last)
-               }.map(makePage)
+               }
+               .map(makePage)
                .caching(to: localFeedLoader)
+               .subscribe(on: scheduler)
+               .eraseToAnyPublisher()
        }
 
        private func makeRemoteFeedLoader(after: FeedImage? = nil) -> AnyPublisher<[FeedImage], Error> {
@@ -127,16 +134,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> FeedImageDataLoader.Publisher {
         let localImageLoader = LocalFeedImageDataLoader(store: store)
-        let client = HTTPClientProfilingDecorator(decoratee: httpClient, logger: logger)
+//        let client = HTTPClientProfilingDecorator(decoratee: httpClient, logger: logger)
         return localImageLoader
             .loadImageDataPublisher(from: url)
             .logCacheMisses(url: url, logger: logger)
-            .fallback(to: {
-                client
+            .fallback(to:  { [httpClient, scheduler] in
+                httpClient
                     .getPublisher(url: url)
                     .tryMap(FeedImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
+                    .subscribe(on: scheduler)
+                    .eraseToAnyPublisher()
             })
+            .subscribe(on: scheduler)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
 
